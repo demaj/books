@@ -7,7 +7,7 @@ services:
       context: .
     entrypoint: bash
     command: >
-      -c "cd /code/app && python manage.py runserver 0.0.0.0:8000"
+      -c "cd /code/app && gunicorn config.wsgi -b 0.0.0.0:8000"
     volumes:
       - ./app:/code/app
     env_file:

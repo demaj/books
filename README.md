@@ -10,17 +10,16 @@
 
 #### From the root directory execute:
 ```bash
-docker-compose up -d --build
+docker-compose -f docker-compose-local.yml up -d --build
 ```
 
 #### Then, we need to make migrations:
 ```bash
-docker-compose exec web python /code/app/manage.py makemigrations accounts
-docker-compose exec web python /code/app/manage.py makemigrations books
-docker-compose exec web python /code/app/manage.py migrate
+docker-compose -f docker-compose-local.yml exec web python /code/app/manage.py makemigrations
+docker-compose -f docker-compose-local.yml exec web python /code/app/manage.py migrate
 ```
 
 #### Create superuser
 ```bash
-docker-compose exec web python /code/app/manage.py createsuperuser
+docker-compose -f docker-compose-local.yml exec web python /code/app/manage.py createsuperuser
 ```
